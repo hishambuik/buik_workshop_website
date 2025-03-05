@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link 
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
+    rel="stylesheet" 
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
+    crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <script defer src="app.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    .accordion-button:focus {
+      box-shadow: none; /* Remove default Bootstrap focus box-shadow */
+      outline: none; /* Remove default outline */
+  }
+    /* Closed state */
+  .accordion-button {
+    background-color: rgb(239, 239, 239); /* Background color when collapsed */
+    color: #000; /* Text color */
+    border-color: #d3d3d3;
+    transition: background-color 0.3s ease; /* Smooth transition */
+  }
+
+  /* Opened state */
+  .accordion-button:not(.collapsed) {
+    background-color: rgba(244, 244, 244, 0.885); /* Background color when expanded */
+    color: #000; /* Text color */
+    border-color: #b3b3b3;
+    text-shadow: 0 0 1px #000;
+    transition: background-color 0.3s ease, text-shadow 0.3s; /* Smooth transition */
+  }
+
+  .accordion-body{
+    background-color: rgb(247, 247, 247);;
+  }
+
+  .accordion-button.collapsed {
+      text-shadow: none; /* Resets when collapsed */
+  }
+
+  .discount{
+    font-size: xx-small;
+  }
+
+  .shop-now-img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2 / 1;
+    object-fit: cover; 
+  }
+
+  .carousel-image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2;
+    object-fit: cover; 
+  }
+
+  .card-body {
+    position: relative;
+  }
+  
+  .card-body .button-shop {
+    position: absolute;
+    bottom: 10px;
+    left: 5%;
+    width: 90%;
+
+  }
+  
+  .smallp{
+    font-size: smaller;
+  }
+
+  .smallp > .smallerp{
+    font-size: x-small;
+    color: rgba(0, 0, 0, 0.722);
+  }
+
+  .discount{
+    font-size: xx-small;
+  }
+
+  .card-body > ul{
+    font-size: x-small;
+    margin: 0;
+    padding:0;
+    padding-left: 0.7rem;
+  }
+  .skib {
+    bottom:30px;
+    right: 30px;
+    position: fixed;
+    display: none;
+    z-index: 1;
+    transition: transform 0.3s ease;
+  }
+
+  .skib:hover{
+    transform: scale(1.15);
+  }
+  
+  .navbar{
+    min-width: 330px;
+  }
+  body{
+    overflow-x: hidden;
+    padding-top:20px;
+  }
+
+  .product {
+    transition: transform 0.2s ease, opacity 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .product:hover {
+    transform: scale(1.1);
+    z-index: 1;
+  }
+  
+  .product:not(:hover) {
+    transform: scale(0.8);
+    opacity: 0.6;
+  }
+
+  .learn-more{
+    text-decoration: none; 
+    color:inherit;
+    transition: transform 0.2s ease;
+  }
+
+  .learn-more:hover{
+    transform: scale(1.05);
+  }
+  
+</style>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md fixed-top navbar-dark py-3 bg-dark">
+            <div class="container-fluid mx-2">
+              <a class="navbar-brand d-flex align-items-center" href="homepage.html">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-pc-display ms-1" viewBox="0 0 16 16">
+                    <path d="M8 1a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1zm1 13.5a.5.5 0 1 0 1 0 .5.5 0 0 0-1 0m2 0a.5.5 0 1 0 1 0 .5.5 0 0 0-1 0M9.5 1a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1zM9 3.5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 0-1h-5a.5.5 0 0 0-.5.5M1.5 2A1.5 1.5 0 0 0 0 3.5v7A1.5 1.5 0 0 0 1.5 12H6v2h-.5a.5.5 0 0 0 0 1H7v-4H1.5a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .5-.5H7V2z"/>
+                </svg>
+                <span class="ms-2">buik's <span class="text-warning">workshop<span class="d-none d-md-inline"><></span></span></span>
+                <div class="vr text-white ms-3 d-none d-md-block"></div>
+              </a>
+
+              
+
+              <!-- Toggler and Person Circle Icon -->
+              <div class="d-flex align-items-center d-md-none">
+                <button class="navbar-toggler me-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                
+
+                <!-- Dropdown for Person Circle Icon -->
+                <div class="dropdown">
+                  <button class="btn btn-dark d-flex align-items-center p-1" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+                    </svg>
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
+                    <li><a class="dropdown-item" href="accountpage.html"><i class="bi bi-person-fill"></i> My Account</a></li>
+                    <li><hr class="divider my-1"></li>
+                    <li><a class="dropdown-item " href="loginpage.html"><i class="bi bi-box-arrow-in-right"></i>  Login</a></li>
+                    <li><a class="dropdown-item" href="signuppage.html"><i class="bi bi-person-plus"></i>  Sign up</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Latest</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Dropdown
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                  </li>
+                </ul>
+
+                <form class="d-flex" role="search">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-light btn" type="submit">Search</button>
+                  <div class="vr text-white ms-3 d-md-block d-none "></div>
+                </form>
+
+                <!-- Person Circle for Large Screens -->
+                <div class="dropdown d-none d-md-block">
+                  <button class="btn btn-dark d-flex align-items-center p-1 ms-2 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+                    </svg>
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
+                    <li><a class="dropdown-item" href="accountpage.html"><i class="bi bi-person-fill"></i> My Account</a></li>
+                    <li><hr class="divider my-1"></li>
+                    <li><a class="dropdown-item " href="loginpage.html"><i class="bi bi-box-arrow-in-right"></i>  Login</a></li>
+                    <li><a class="dropdown-item" href="signuppage.html"><i class="bi bi-person-plus"></i>  Sign up</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            
+        </nav>
+        <div class="container">
+          
+        </div>
+    </header>
+
+    <main class="mt-3 py-5 " style="background-color: rgb(239, 239, 239);">
+      <div class="container mt-2 pt-2 mb-5 hidden from-top">
+        <div class="row ">
+          <div class="col-md-5 order-md-first order-last">
+
+            <h1 class="mt-4 pt-2 header-5 fs-2 d-xxl-none d-xl-block d-md-block d-none ">Buik's Workshop – <span class="text-warning"><<span class="auto-typed2 fw-semibold px-2 pb-1 rounded"></span>></span></h1>
+            <h1 class="mt-3 header-5 d-md-none fs-3">Buik's Workshop – <span class="text-warning"><<span class="auto-typed fw-semibold px-2 pb-1 rounded"></span>></span></h1>
+            <h1 class="mt-5 pt-5 d-none d-xxl-block"><strong class="display-4 fw-semibold">Buik's Workshop –<br><span class="text-warning display-3"><span class="auto-typed1 fw-semibold px-2 pb-1 rounded"></span></span></strong></h1>
+            <h6 class="text-secondary ms-2 me-5"><small class="text-muted">Discover our extensive collection of high-performance laptops, crafted to meet every need from casual browsing to intensive work. Or, if your device isn’t running like it used to, let our skilled technicians restore it to peak condition.</small></h6>
+
+            <button class="btn btn-warning mt-2 learn-more btn-md-sm" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><a href="#about-us" class="learn-more">Learn more...</a></button>
+          </div>
+          <div class="col-md-7 p-0">
+            <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3500">
+              <div class="carousel-inner">
+                  <div class="carousel-item active">
+                      <img src="https://media.wired.com/photos/64daad6b4a854832b16fd3bc/191:100/w_1280,c_limit/How-to-Choose-a-Laptop-August-2023-Gear.jpg" class="d-block w-100 carousel-image" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                      <img src="https://media.wired.com/photos/64a5d3aa93ba5cd8bbdc9656/master/w_1920%2Cc_limit/Framework-Laptop-Review-Featured-Gear.jpg" class="d-block w-100 carousel-image" alt="...">
+                  </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid bg-warning bg-gradient my-4">
+        <div class="container">
+          <div class="row px-3 py-4">
+            <h5 class="mb-3 hidden from-right">Explore products at buik's workshop <></h5>
+            <div class="row d-flex justify-content-evenly">
+              <div class="col-md-2 col-4 hidden from-left delay-logo">
+                <span class="d-flex flex-column align-items-center rounded px-4 pt-3 product">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-laptop" viewBox="0 0 16 16">
+                    <path d="M13.5 3a.5.5 0 0 1 .5.5V11H2V3.5a.5.5 0 0 1 .5-.5zm-11-1A1.5 1.5 0 0 0 1 3.5V12h14V3.5A1.5 1.5 0 0 0 13.5 2zM0 12.5h16a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 12.5"/>
+                  </svg>
+                  
+                  <p class="mb-2"><strong>Laptops</strong></p>
+                </span>
+                  
+  
+              </div>
+              <div class="col-md-2 col-4 hidden from-left delay-logo">
+                
+                <span class="d-flex flex-column align-items-center rounded px-4 pt-3 product">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-tablet" viewBox="0 0 16 16">
+                    <path d="M12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                    <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
+                  </svg>
+                    
+                  <p class="mb-2"><strong>Tablets</strong></p>
+                </span>
+  
+              </div>
+              <div class="col-md-2 col-4 hidden from-left delay-logo">
+                <span class="d-flex flex-column align-items-center rounded px-4 pt-3 product">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-display" viewBox="0 0 16 16">
+                    <path d="M0 4s0-2 2-2h12s2 0 2 2v6s0 2-2 2h-4q0 1 .25 1.5H11a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1h.75Q6 13 6 12H2s-2 0-2-2zm1.398-.855a.76.76 0 0 0-.254.302A1.5 1.5 0 0 0 1 4.01V10c0 .325.078.502.145.602q.105.156.302.254a1.5 1.5 0 0 0 .538.143L2.01 11H14c.325 0 .502-.078.602-.145a.76.76 0 0 0 .254-.302 1.5 1.5 0 0 0 .143-.538L15 9.99V4c0-.325-.078-.502-.145-.602a.76.76 0 0 0-.302-.254A1.5 1.5 0 0 0 13.99 3H2c-.325 0-.502.078-.602.145"/>
+                  </svg>
+                    <p class="mb-2"><strong>Monitors</strong></p>
+                </span>
+                
+              </div>
+              <div class="col-md-2 col-4 hidden from-right delay-logo">
+                <span class="d-flex flex-column align-items-center rounded px-4 pt-3 product">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-earbuds" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M6.825 4.138c.596 2.141-.36 3.593-2.389 4.117a4.4 4.4 0 0 1-2.018.054c-.048-.01.9 2.778 1.522 4.61l.41 1.205a.52.52 0 0 1-.346.659l-.593.19a.55.55 0 0 1-.69-.34L.184 6.99c-.696-2.137.662-4.309 2.564-4.8 2.029-.523 3.402 0 4.076 1.948zm-.868 2.221c.43-.112.561-.993.292-1.969-.269-.975-.836-1.675-1.266-1.563s-.561.994-.292 1.969.836 1.675 1.266 1.563m3.218-2.221c-.596 2.141.36 3.593 2.389 4.117a4.4 4.4 0 0 0 2.018.054c.048-.01-.9 2.778-1.522 4.61l-.41 1.205a.52.52 0 0 0 .346.659l.593.19c.289.092.6-.06.69-.34l2.536-7.643c.696-2.137-.662-4.309-2.564-4.8-2.029-.523-3.402 0-4.076 1.948m.868 2.221c-.43-.112-.561-.993-.292-1.969.269-.975.836-1.675 1.266-1.563s.561.994.292 1.969-.836 1.675-1.266 1.563"/>
+                  </svg>
+                    
+                    <p class="mb-2"><strong>Accesories</strong></p>
+                </span>
+                
+  
+              </div>
+              <div class="col-md-2 col-4 hidden from-right delay-logo">
+                <span class="d-flex flex-column align-items-center rounded px-4 pt-3 product">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-pc-display-horizontal" viewBox="0 0 16 16">
+                    <path d="M1.5 0A1.5 1.5 0 0 0 0 1.5v7A1.5 1.5 0 0 0 1.5 10H6v1H1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-5v-1h4.5A1.5 1.5 0 0 0 16 8.5v-7A1.5 1.5 0 0 0 14.5 0zm0 1h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .5-.5M12 12.5a.5.5 0 1 1 1 0 .5.5 0 0 1-1 0m2 0a.5.5 0 1 1 1 0 .5.5 0 0 1-1 0M1.5 12h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1M1 14.25a.25.25 0 0 1 .25-.25h5.5a.25.25 0 1 1 0 .5h-5.5a.25.25 0 0 1-.25-.25"/>
+                  </svg>
+                  
+                  <p class="mb-2"><strong>Desktops</strong></p>
+                </span>
+  
+              </div>
+              <div class="col-md-2 col-4 hidden from-right delay-logo">
+                
+                  <span class="d-flex flex-column align-items-center rounded px-4 pt-3 product">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-android" viewBox="0 0 16 16">
+                      <path d="M2.76 3.061a.5.5 0 0 1 .679.2l1.283 2.352A8.9 8.9 0 0 1 8 5a8.9 8.9 0 0 1 3.278.613l1.283-2.352a.5.5 0 1 1 .878.478l-1.252 2.295C14.475 7.266 16 9.477 16 12H0c0-2.523 1.525-4.734 3.813-5.966L2.56 3.74a.5.5 0 0 1 .2-.678ZM5 10a1 1 0 1 0 0-2 1 1 0 0 0 0 2m6 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
+                    </svg>
+                    
+                    <p class="mb-2"><strong>Apps</strong></p>
+                  </span>
+  
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row hidden from-left">
+          <h1 class="mt-3 header-5 fs-4 d-xxl-none d-xl-block d-lg-block d-none">Our hottest <i class="bi bi-fire"></i> laptops right now</h1>
+          <h1 class="mt-3 header-5 d-lg-none fs-5">Our hottest <i class="bi bi-fire"></i> laptops right now</h1>
+          <h1 class="mt-4 header-5 fs-3 d-xxl-block d-none">Our hottest <i class="bi bi-fire"></i> laptops right now</h1>
+          <h6 class="text-secondary"><small class="text-muted">Explore our range of laptops or let us bring your device back to life today!</small></h6>
+        </div>
+      </div>
+
+      <div class="container my-5">
+        <div class="row d-lg-none">
+          <div id="carouselHottest" class="carousel slide">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="row">
+                  <div class="col-lg-3 col-6 card-container hidden delay from-down">
+                    <a href="" class="text-decoration-none">
+                      <div class="card h-100">
+                        <div class="card-header text-light bg-dark">
+                          <h6 class="pt-2 text-truncate"><span class="text-warning">ThinkPad E16</span> Gen(16"Intel) Laptop</h6>
+                          <p class="mb-1">
+                            <span class="text-warning">
+                              <i class="bi bi-star-fill"></i>
+                              <i class="bi bi-star-fill"></i>
+                              <i class="bi bi-star-fill"></i>
+                              <i class="bi bi-star-fill"></i>
+                              <i class="bi bi-star-half"></i>
+                            </span>
+                            <small class="text-secondary">4.6 (432)</small>
+                          </p>
+                        </div>
+                        <div class="card-body">
+                          <img src="https://p1-ofp.static.pub//fes/cms/2024/03/07/6a3k4frc44nsw0i57pcudnji8exmng820679.png" class="card-img-top" alt="...">
+                          <h6 class="display-6 fs-6 mt-2 mb-0"><small>Starting at</small></h6>
+                          <h6 class="display-6 fs-4 pt-0 fw-semibold">$829.50</h6>
+                          <ul class="list-sticky ms-2 mt-3 mb-2">
+                            <li>16"2-in-1 with four use modes</li>
+                            <li>Fueled by an Intel®Core™ Ultra processor</li>
+                            <li>Vivid big-screen display & immersive audio</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="col-lg-3 col-6 card-container hidden delay from-down">
+                    <a href="" class="text-decoration-none">
+                      <div class="card h-100">
+                        <div class="card-header text-light bg-dark">
+                          <h6 class="pt-2 text-truncate"><span class="text-warning">ThinkPad X1 Carbon</span> Gen 12(14"Intel) Laptop</h6>
+                          <p class="mb-1">
+                            <span class="text-warning">
+                              <i class="bi bi-star-fill"></i>
+                              <i class="bi bi-star-fill"></i>
+                              <i class="bi bi-star-fill"></i>
+                              <i class="bi bi-star-fill"></i>
+                              <i class="bi bi-star-half"></i>
+                            </span>
+                            <small class="text-secondary">4.5 (404)</small>
+                          </p>
+                        </div>
+                        <div class="card-body">
+                          <img src="https://p1-ofp.static.pub//fes/cms/2024/03/07/6a3k4frc44nsw0i57pcudnji8exmng820679.png" class="card-img-top" alt="...">
+                          <h6 class="display-6 fs-6 mt-2 mb-0"><small>Starting at</small></h6>
+                          <h6 class="display-6 fs-4 pt-0 fw-semibold">$1,361.88</h6>
+                          <ul class="list-sticky ms-2 mt-3 mb-2">
+                            <li>Certified Intel®Evo™ with up to Intel®vPro™</li>
+                            <li>Super-responsive with twice the memory as previous gen</li>
+                            <li>Communications Bar for enhanced collaboration</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="row">
+                  <div class="col-lg-3 col-6 card-container hidden delay from-down">
+                    <a href="" class="text-decoration-none">
+                      <div class="card h-100">
+                        <div class="card-header text-light bg-dark">
+                          <h6 class="pt-2 text-truncate"><span class="text-warning">ThinkPad P14s</span> Gen5(14"Intel) Laptop</h6>
+                          <p class="mb-1">
+                            <span class="text-warning">
+                              <i class="bi bi-star-fill"></i>
+                              <i class="bi bi-star-fill"></i>
+                              <i class="bi bi-star-fill"></i>
+                              <i class="bi bi-star-fill"></i>
+                              <i class="bi bi-star-half"></i>
+                            </span>
+                            <small class="text-secondary">4.6 (432)</small>
+                          </p>
+                        </div>
+                        <div class="card-body">
+                          <img src="https://p4-ofp.static.pub//fes/cms/2024/04/26/a9ako1zhjkbkb23zcpc7gkl6xdxy2k085325.png" class="card-img-top" alt="...">
+                          <h6 class="display-6 fs-6 mt-2 mb-0"><small>Starting at</small></h6>
+                          <h6 class="display-6 fs-4 pt-0 fw-semibold">$899.00</h6>
+                          <ul class="list-sticky ms-2 mt-3 mb-2">
+                            <li>16"display provides enhanced multitasking span& viewing experience</li>
+                            <li>Durable & certified using US Dept. of Defense MIL-STD 810H standards</li>
+                            <li>Ideal for tech-focused, commercial & SMB professionals</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="col-lg-3 col-6 card-container hidden delay from-down">
+                    <a href="" class="text-decoration-none">
+                      <div class="card h-100">
+                        <div class="card-header text-light bg-dark">
+                          <h6 class="pt-2 text-truncate"><span class="text-warning">ThinkPad E16</span> Gen(14"Intel) Laptop</h6>
+                          <p class="mb-1">
+                            <span class="text-warning">
+                              <i class="bi bi-star-fill"></i>
+                              <i class="bi bi-star-fill"></i>
+                              <i class="bi bi-star-fill"></i>
+                              <i class="bi bi-star-fill"></i>
+                              <i class="bi bi-star-half"></i>
+                            </span>
+                            <small class="text-secondary">4.6 (32)</small>
+                          </p>
+                        </div>
+                        <div class="card-body">
+                          <img src="https://p1-ofp.static.pub//fes/cms/2024/03/07/6a3k4frc44nsw0i57pcudnji8exmng820679.png" class="card-img-top" alt="...">
+                          <h6 class="display-6 fs-6 mt-2 mb-0"><small>Starting at</small></h6>
+                          <h6 class="display-6 fs-4 pt-0 fw-semibold">$721.20</h6>
+                          <ul class="list-sticky ms-2 mt-3 mb-2">
+                            <li>Ignite creativity with AMD Ryzen™ 8049 Series processors</li>
+                            <li>Vivid 14"2.5k display</li>
+                            <li>Lenovo AI Engine+ boosts performance</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button class="carousel-control-prev d-none d-sm-inline" type="button" data-bs-target="#carouselHottest" data-bs-slide="prev">
+              <span class="pt-2 pb-1 px-2 bg-dark rounded-circle me-3" style="margin-left: -110px;">
+                <span class="carousel-control-prev-icon " aria-hidden="true" style="height: 20px; width:20px"></span>
+                <span class="visually-hidden">Previous</span>
+              </span>
+            </button>
+            <button class="carousel-control-next d-none d-sm-inline" type="button" data-bs-target="#carouselHottest" data-bs-slide="next">
+              <span class="pt-2 pb-1 px-2 bg-dark rounded-circle ms-3" style="margin-right: -110px;">
+                <span class="carousel-control-next-icon" aria-hidden="true" style="height: 20px; width:20px"></span>
+                <span class="visually-hidden">Next</span>
+              </span>
+            </button>
+
+            <button class="carousel-control-prev d-sm-none" type="button" data-bs-target="#carouselHottest" data-bs-slide="prev">
+              <span class="pt-2 pb-1 px-2 bg-dark rounded-circle me-3 ">
+                <span class="carousel-control-prev-icon " aria-hidden="true" style="height: 20px; width:20px"></span>
+                <span class="visually-hidden">Previous</span>
+              </span>
+            </button>
+            <button class="carousel-control-next d-sm-none" type="button" data-bs-target="#carouselHottest" data-bs-slide="next">
+              <span class="pt-2 pb-1 px-2 bg-dark rounded-circle ms-3">
+                <span class="carousel-control-next-icon" aria-hidden="true" style="height: 20px; width:20px"></span>
+                <span class="visually-hidden">Next</span>
+              </span>
+            </button>
+          </div>
+        </div>
+        <div class="row d-none d-lg-flex justify-content-center g-3">
+          <div class="col-lg-3 col-6 card-container hidden delay-laptop from-left">
+            <a href="" class="text-decoration-none">
+              <div class="card h-100">
+                <div class="card-header text-light bg-dark">
+                  <h6 class="pt-2"><span class="text-warning">ThinkPad E16</span> Gen(16"Intel) Laptop</h6>
+                  <p class="mb-1">
+                    <span class="text-warning">
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-half"></i>
+                    </span>
+                    <small class="text-secondary">4.6 (432)</small>
+                  </p>
+                </div>
+                <div class="card-body">
+                  <img src="https://p1-ofp.static.pub//fes/cms/2024/03/07/6a3k4frc44nsw0i57pcudnji8exmng820679.png" class="card-img-top" alt="...">
+                  <h6 class="display-6 fs-6 mt-2 mb-0"><small>Starting at</small></h6>
+                  <h6 class="display-6 fs-4 pt-0 fw-semibold">$829.50</h6>
+                  <ul class="list-sticky ms-2 mt-3 mb-5">
+                    <li>16"2-in-1 with four use modes</li>
+                    <li>Fueled by an Intel®Core™ Ultra processor</li>
+                    <li>Vivid big-screen display & immersive audio</li>
+                  </ul>
+                  <button class="btn btn-dark rounded-pill smallp button-shop">Shop</button>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-3 col-6 card-container hidden delay-laptop from-left">
+            <a href="" class="text-decoration-none">
+              <div class="card h-100">
+                <div class="card-header text-light bg-dark">
+                  <h6 class="pt-2 "><span class="text-warning">ThinkPad X1 Carbon</span> Gen 12(14"Intel) Laptop</h6>
+                  <p class="mb-1">
+                    <span class="text-warning">
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-half"></i>
+                    </span>
+                    <small class="text-secondary">4.5 (404)</small>
+                  </p>
+                </div>
+                <div class="card-body">
+                  <img src="https://p1-ofp.static.pub//fes/cms/2024/03/07/6a3k4frc44nsw0i57pcudnji8exmng820679.png" class="card-img-top" alt="...">
+                  <h6 class="display-6 fs-6 mt-2 mb-0"><small>Starting at</small></h6>
+                  <h6 class="display-6 fs-4 pt-0 fw-semibold">$1,361.88</h6>
+                  <ul class="list-sticky ms-2 mt-3 mb-5">
+                    <li>Certified Intel®Evo™ with up to Intel®vPro™</li>
+                    <li>Super-responsive with twice the memory as previous gen</li>
+                    <li>Communications Bar for enhanced collaboration</li>
+                  </ul>
+                  <button class="btn btn-dark rounded-pill smallp button-shop">Shop</button>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-3 col-6 card-container hidden delay-laptop from-left">
+            <a href="" class="text-decoration-none">
+              <div class="card h-100">
+                <div class="card-header text-light bg-dark">
+                  <h6 class="pt-2"><span class="text-warning">ThinkPad P14s</span> Gen5(14"Intel) Laptop</h6>
+                  <p class="mb-1">
+                    <span class="text-warning">
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-half"></i>
+                    </span>
+                    <small class="text-secondary">4.6 (432)</small>
+                  </p>
+                </div>
+                <div class="card-body">
+                  <img src="https://p4-ofp.static.pub//fes/cms/2024/04/26/a9ako1zhjkbkb23zcpc7gkl6xdxy2k085325.png" class="card-img-top" alt="...">
+                  <h6 class="display-6 fs-6 mt-2 mb-0"><small>Starting at</small></h6>
+                  <h6 class="display-6 fs-4 pt-0 fw-semibold">$899.00</h6>
+                  <ul class="list-sticky ms-2 mt-3 mb-5">
+                    <li>16"display provides enhanced multitasking & viewing experience</li>
+                    <li>Durable & certified using US Dept. of Defense MIL-STD 810H standards</li>
+                    <li>Ideal for tech-focused, commercial & SMB professionals</li>
+                  </ul>
+                  <button class="btn btn-dark rounded-pill smallp button-shop">Shop</button>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-3 col-6 card-container hidden delay-laptop from-left">
+            <a href="" class="text-decoration-none">
+              <div class="card h-100">
+                <div class="card-header text-light bg-dark">
+                  <h6 class="pt-2"><span class="text-warning">ThinkPad E16</span> Gen(14"Intel) Laptop</h6>
+                  <p class="mb-1">
+                    <span class="text-warning">
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-half"></i>
+                    </span>
+                    <small class="text-secondary">4.6 (32)</small>
+                  </p>
+                </div>
+                <div class="card-body">
+                  <img src="https://p1-ofp.static.pub//fes/cms/2024/03/07/6a3k4frc44nsw0i57pcudnji8exmng820679.png" class="card-img-top" alt="...">
+                  <h6 class="display-6 fs-6 mt-2 mb-0"><small>Starting at</small></h6>
+                  <h6 class="display-6 fs-4 pt-0 fw-semibold">$721.20</h6>
+                  <ul class="list-sticky ms-2 mt-3 mb-5">
+                    <li>Ignite creativity with AMD Ryzen™ 8049 Series processors</li>
+                    <li>Vivid 14"2.5k display</li>
+                    <li>Lenovo AI Engine+ boosts performance</li>
+                  </ul>
+                  <button class="btn btn-dark rounded-pill smallp button-shop">Shop</button>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid bg-warning mt-5 mb-3 py-4">
+        <div class="container py-4">
+          <div class="row g-3">
+            <div class="col-sm-4 card-container hidden from-right">
+              <a href="" class="text-decoration-none">
+                <div class="card h-100 bg-dark text-warning">
+                  <img src="https://p3-ofp.static.pub/ShareResource/na/homepage/sales-cards/lenovo-hero-tech-today-xl.jpg" class="card-img-top shop-now-img" alt="...">
+                  <div class="card-body">
+                    <h4>Windows 11<span class="text-light">.</span> Secure<span class="text-light">.</span> Fast<span class="text-light">.</span> Simple<span class="text-light">.</span></h4>
+                    <p class="smallp text-light"><small>Get Windows 11 today. Secure, fast navigation and enhanced productivity.</small></p>
+                    <button class="btn btn-outline-warning smallp">Shop Now</button>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="col-sm-4 card-container hidden from-right">
+              <a href="" class="text-decoration-none">
+                <div class="card h-100 bg-dark text-warning">
+                  <img src="https://p2-ofp.static.pub/ShareResource/na/homepage/sales-cards/lenovo-ai-workstation.jpg" class="card-img-top shop-now-img" alt="...">
+                  <div class="card-body">
+                    <h4>Welcome to the future<span class="text-light">.</span></h4>
+                    <p class="smallp text-light"><small>Propel your business into the future with Lenovo's cutting-edge AI PCs.</small></p>
+                    <button class="btn btn-outline-warning smallp">Shop Now</button>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="col-sm-4 card-container hidden from-right">
+              <a href="" class="text-decoration-none">
+                <div class="card h-100 bg-dark text-warning">
+                  <img src="https://p3-ofp.static.pub/ShareResource/na/smb/espots/lenovo-m70t-gen-3-tower.jpg" class="card-img-top shop-now-img" alt="...">
+                  <div class="card-body">
+                    <h4>Your Office, Our Desktops</span> Fast<span class="text-light">.</span></h4>
+                    <p class="smallp text-light"><small>From enterprise towers to tiny PCs, get what your business needs.</small></p>
+                    <button class="btn btn-outline-warning smallp">Shop Now</button>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row hidden from-right">
+          <h1 class="mt-3 header-5 fs-4 d-xxl-none d-xl-block d-lg-block d-none text-end">Latest Accesory Essenstials <i class="bi bi-earbuds"></i></h1>
+          <h1 class="mt-3 header-5 d-lg-none fs-5 text-end">Latest Accesory Essenstials <i class="bi bi-earbuds"></i></h1>
+          <h1 class="mt-4 header-5 fs-3 d-xxl-block d-none text-end">Latest Accesory Essenstials <i class="bi bi-earbuds"></i></h1>
+          <h6 class="text-secondary text-end"><small class="text-muted">Explore our range of accesories or let us bring your device back to life today!</small></h6>
+        </div>
+      </div>
+
+      <div class="container my-5">
+        <div class="row d-lg-none">
+          <div id="carouselAccesory" class="carousel slide">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="row">
+                  <div class="col-lg-3 col-6 card-container hidden delay-accesory from-down">
+                    <a href="" class="text-decoration-none">
+                      <div class="card h-100">
+                        <div class="card-header text-light bg-dark">
+                          <h6 class="pt-2"><span class="text-warning">Mobile Pixels Glance</span> Pro 15.6 inch LCD</h6>
+                          <p class="mb-1">
+                            <span class="text-warning">
+                              <i class="bi bi-star-fill"></i>
+                              <i class="bi bi-star-fill"></i>
+                              <i class="bi bi-star-fill"></i>
+                              <i class="bi bi-star-fill"></i>
+                              <i class="bi bi-star-half"></i>
+                            </span>
+                            <small class="text-secondary">4.4 (432)</small>
+                          </p>
+                        </div>
+                        <div class="card-body">
+                          <img src="https://p1-ofp.static.pub/ShareResource/560x450/3PO/NWP-48003/78189090/78189090-560x450-01.b27abfb18f59ffc3.png" class="card-img-top" alt="...">
+                          <p class="mb-0"><small class="smallp">Est Value <i class="bi bi-info-circle -fill"></i> <span class="text-decoration-line-through smallerp">$449.99</span></small></p>
+                          <h6 class="display-6 fs-4 pt-0 fw-semibold d-flex align-items-center" style="text-decoration:inherit">$829.50 <span class="smallp mt-1 ms-1 discount badge text-bg-success">15% off</span> </h6>
+                          <button class="btn btn-dark rounded-pill w-100 smallp mt-2">Shop</button>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="col-lg-3 col-6 card-container hidden delay-accesory from-down">
+                    <a href="" class="text-decoration-none">
+                      <div class="card h-100">
+                        <div class="card-header text-light bg-dark">
+                          <h6 class="pt-2 "><span class="text-warning">Lenovo H110</span> Gaming Headset Pro 12.1</h6>
+                          <p class="mb-1">
+                            <span class="text-warning">
+                              <i class="bi bi-star-fill"></i>
+                              <i class="bi bi-star-fill"></i>
+                              <i class="bi bi-star-fill"></i>
+                              <i class="bi bi-star-fill"></i>
+                              <i class="bi bi-star-half"></i>
+                            </span>
+                            <small class="text-secondary">4.2 (421)</small>
+                          </p>
+                        </div>
+                        <div class="card-body">
+                          <img src="https://p2-ofp.static.pub//fes/cms/2024/06/28/ts1jwfmnbrys17ynhr09c3519j4k5t676419.png" class="card-img-top" alt="...">
+                          <p class="mb-0"><small class="smallp">Est Value <i class="bi bi-info-circle -fill"></i> <span class="text-decoration-line-through smallerp">$29.99</span></small></p>
+                          <h6 class="display-6 fs-4 pt-0 fw-semibold d-flex align-items-center" style="text-decoration:inherit">$22.09 <span class="smallp mt-1 ms-1 discount badge text-bg-success">27% off</span> </h6>
+                          <button class="btn btn-dark rounded-pill w-100 smallp mt-2">Shop</button>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="row">
+                  <div class="col-lg-3 col-6 card-container hidden delay-accesory from-down">
+                    <a href="" class="text-decoration-none">
+                      <div class="card h-100">
+                        <div class="card-header text-light bg-dark">
+                          <h6 class="pt-2"><span class="text-warning">Lenovo Wired Keyboard</span> & Mouse Combo</h6>
+                          <p class="mb-1">
+                            <span class="text-warning">
+                              <i class="bi bi-star-fill"></i>
+                              <i class="bi bi-star-fill"></i>
+                              <i class="bi bi-star-fill"></i>
+                              <i class="bi bi-star-fill"></i>
+                              <i class="bi bi-star-half"></i>
+                            </span>
+                            <small class="text-secondary">4.4 (214)</small>
+                          </p>
+                        </div>
+                        <div class="card-body">
+                          <img src="https://p2-ofp.static.pub/ShareResource/560x450/SSNP/4X30L79883/4X30L79883-560x450-01.0ba1e1ae67416c19.png" class="card-img-top" alt="...">
+                          <p class="mb-0"><small class="smallp">Est Value <i class="bi bi-info-circle -fill"></i> <span class="text-decoration-line-through smallerp">$21.99</span></small></p>
+                          <h6 class="display-6 fs-4 pt-0 fw-semibold d-flex align-items-center" style="text-decoration:inherit">$15.99 <span class="smallp mt-1 ms-1 discount badge text-bg-success">27% off</span> </h6>
+                          <button class="btn btn-dark rounded-pill w-100 smallp mt-2">Shop</button>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="col-lg-3 col-6 card-container hidden delay-accesory from-down">
+                    <a href="" class="text-decoration-none">
+                      <div class="card h-100">
+                        <div class="card-header text-light bg-dark">
+                          <h6 class="pt-2"><span class="text-warning">Lenovo USB-C</span> Wired In-Ear Headphone</h6>
+                          <p class="mb-1">
+                            <span class="text-warning">
+                              <i class="bi bi-star-fill"></i>
+                              <i class="bi bi-star-fill"></i>
+                              <i class="bi bi-star-fill"></i>
+                              <i class="bi bi-star-fill"></i>
+                              <i class="bi bi-star-half"></i>
+                            </span>
+                            <small class="text-secondary">4.1 (92)</small>
+                          </p>
+                        </div>
+                        <div class="card-body">
+                          <img src="https://p2-ofp.static.pub/fes/cms/2022/08/11/pw2mx2bjal06ku1up598pwip9xno3e242107.png" class="card-img-top" alt="...">
+                          <p class="mb-0"><small class="smallp">Est Value <i class="bi bi-info-circle -fill"></i> <span class="text-decoration-line-through smallerp">$19.99</span></small></p>
+                          <h6 class="display-6 fs-4 pt-0 fw-semibold d-flex align-items-center" style="text-decoration:inherit">$7.99 <span class="smallp mt-1 ms-1 discount badge text-bg-success">60% off</span> </h6>
+                          <button class="btn btn-dark rounded-pill w-100 smallp mt-2">Shop</button>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button class="carousel-control-prev d-none d-sm-inline" type="button" data-bs-target="#carouselAccesory" data-bs-slide="prev">
+              <span class="pt-2 pb-1 px-2 bg-dark rounded-circle me-3" style="margin-left: -110px;">
+                <span class="carousel-control-prev-icon " aria-hidden="true" style="height: 20px; width:20px"></span>
+                <span class="visually-hidden">Previous</span>
+              </span>
+            </button>
+            <button class="carousel-control-next d-none d-sm-inline" type="button" data-bs-target="#carouselAccesory" data-bs-slide="next">
+              <span class="pt-2 pb-1 px-2 bg-dark rounded-circle ms-3" style="margin-right: -110px;">
+                <span class="carousel-control-next-icon" aria-hidden="true" style="height: 20px; width:20px"></span>
+                <span class="visually-hidden">Next</span>
+              </span>
+            </button>
+    
+            <button class="carousel-control-prev d-sm-none" type="button" data-bs-target="#carouselAccesory" data-bs-slide="prev">
+              <span class="pt-2 pb-1 px-2 bg-dark rounded-circle me-3 ">
+                <span class="carousel-control-prev-icon " aria-hidden="true" style="height: 20px; width:20px"></span>
+                <span class="visually-hidden">Previous</span>
+              </span>
+            </button>
+            <button class="carousel-control-next d-sm-none" type="button" data-bs-target="#carouselAccesory" data-bs-slide="next">
+              <span class="pt-2 pb-1 px-2 bg-dark rounded-circle ms-3">
+                <span class="carousel-control-next-icon" aria-hidden="true" style="height: 20px; width:20px"></span>
+                <span class="visually-hidden">Next</span>
+              </span>
+            </button>
+          </div>
+        </div>
+        <div class="row d-none d-lg-flex justify-content-center">
+          <div class="col-lg-3 col-6 card-container hidden delay-accesory from-right">
+            <a href="" class="text-decoration-none">
+              <div class="card h-100">
+                <div class="card-header text-light bg-dark">
+                  <h6 class="pt-2"><span class="text-warning">Mobile Pixels Glance</span> Pro 15.6 inch LCD</h6>
+                  <p class="mb-1">
+                    <span class="text-warning">
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-half"></i>
+                    </span>
+                    <small class="text-secondary">4.4 (432)</small>
+                  </p>
+                </div>
+                <div class="card-body">
+                  <img src="https://p1-ofp.static.pub/ShareResource/560x450/3PO/NWP-48003/78189090/78189090-560x450-01.b27abfb18f59ffc3.png" class="card-img-top" alt="...">
+                  <p class="mb-0"><small class="smallp">Est Value <i class="bi bi-info-circle -fill"></i> <span class="text-decoration-line-through smallerp">$449.99</span></small></p>
+                  <h6 class="display-6 fs-4 pt-0 fw-semibold d-flex align-items-center" style="text-decoration:inherit">$829.50 <span class="smallp mt-1 ms-1 discount badge text-bg-success">15% off</span> </h6>
+                  <button class="btn btn-dark rounded-pill w-100 smallp mt-2">Shop</button>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-3 col-6 card-container hidden delay-accesory from-right">
+            <a href="" class="text-decoration-none">
+              <div class="card h-100">
+                <div class="card-header text-light bg-dark">
+                  <h6 class="pt-2 "><span class="text-warning">Lenovo H110</span> Gaming Headset Pro 12.1</h6>
+                  <p class="mb-1">
+                    <span class="text-warning">
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-half"></i>
+                    </span>
+                    <small class="text-secondary">4.2 (421)</small>
+                  </p>
+                </div>
+                <div class="card-body">
+                  <img src="https://p2-ofp.static.pub//fes/cms/2024/06/28/ts1jwfmnbrys17ynhr09c3519j4k5t676419.png" class="card-img-top" alt="...">
+                  <p class="mb-0"><small class="smallp">Est Value <i class="bi bi-info-circle -fill"></i> <span class="text-decoration-line-through smallerp">$29.99</span></small></p>
+                  <h6 class="display-6 fs-4 pt-0 fw-semibold d-flex align-items-center" style="text-decoration:inherit">$22.09 <span class="smallp mt-1 ms-1 discount badge text-bg-success">27% off</span> </h6>
+                  <button class="btn btn-dark rounded-pill w-100 smallp mt-2">Shop</button>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-3 col-6 card-container hidden delay-accesory from-right">
+            <a href="" class="text-decoration-none">
+              <div class="card h-100">
+                <div class="card-header text-light bg-dark">
+                  <h6 class="pt-2"><span class="text-warning">Lenovo Wired Keyboard</span> & Mouse Combo</h6>
+                  <p class="mb-1">
+                    <span class="text-warning">
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-half"></i>
+                    </span>
+                    <small class="text-secondary">4.4 (214)</small>
+                  </p>
+                </div>
+                <div class="card-body">
+                  <img src="https://p2-ofp.static.pub/ShareResource/560x450/SSNP/4X30L79883/4X30L79883-560x450-01.0ba1e1ae67416c19.png" class="card-img-top" alt="...">
+                  <p class="mb-0"><small class="smallp">Est Value <i class="bi bi-info-circle -fill"></i> <span class="text-decoration-line-through smallerp">$21.99</span></small></p>
+                  <h6 class="display-6 fs-4 pt-0 fw-semibold d-flex align-items-center" style="text-decoration:inherit">$15.99 <span class="smallp mt-1 ms-1 discount badge text-bg-success">27% off</span> </h6>
+                  <button class="btn btn-dark rounded-pill w-100 smallp mt-2">Shop</button>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-3 col-6 card-container hidden delay-accesory from-right">
+            <a href="" class="text-decoration-none">
+              <div class="card h-100">
+                <div class="card-header text-light bg-dark">
+                  <h6 class="pt-2"><span class="text-warning">Lenovo USB-C</span> Wired In-Ear Headphone</h6>
+                  <p class="mb-1">
+                    <span class="text-warning">
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-half"></i>
+                    </span>
+                    <small class="text-secondary">4.1 (92)</small>
+                  </p>
+                </div>
+                <div class="card-body">
+                  <img src="https://p2-ofp.static.pub/fes/cms/2022/08/11/pw2mx2bjal06ku1up598pwip9xno3e242107.png" class="card-img-top" alt="...">
+                  <p class="mb-0"><small class="smallp">Est Value <i class="bi bi-info-circle -fill"></i> <span class="text-decoration-line-through smallerp">$19.99</span></small></p>
+                  <h6 class="display-6 fs-4 pt-0 fw-semibold d-flex align-items-center" style="text-decoration:inherit">$7.99 <span class="smallp mt-1 ms-1 discount badge text-bg-success">60% off</span> </h6>
+                  <button class="btn btn-dark rounded-pill w-100 smallp mt-2">Shop</button>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="container mt-4 pt-5 mb-2">
+        <div class="accordion accordion-flush " id="accordionPanelsStayOpenExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                What are the latest buik's workshop laptops available in the market?
+              </button>
+            </h2>
+            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingOne">
+              <hr class="my-0">
+              <div class="accordion-body">
+                buik's workshop continually refreshes its lineup with the latest technology and features. Among the most recent buik's workshop laptops to hit the market are updated versions of our flagship models: ThinkPad, ThinkBook, IdeaPad, buik's workshop Slim, and Yoga series. These notebooks incorporate the latest in processing power and design. The Legion series also frequently sees new models with enhancements tailored to gaming performance.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                How to choose the right buik's workshop laptop for my needs?
+              </button>
+            </h2>
+            <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+              <hr class="my-0">
+              <div class="accordion-body">
+                When choosing the right buik's workshop laptop, consider your primary use cases—whether that's work, gaming, study, or entertainment. This will help you determine the amount of processing power, memory, and graphics your laptop needs. If you’re always using the laptop on the go, remember to keep in mind the weight of your laptop for portability and battery life. buik's workshop offers a variety of series catering to different needs, from the robust ThinkPad series for professionals to the IdeaPad and Yoga series for versatility, and the Legion series for gaming.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                What differentiates buik's workshop's ThinkPad, IdeaPad, and Yoga series?
+              </button>
+            </h2>
+            <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+              <hr class="my-0">
+              <div class="accordion-body">
+                The ThinkPad series is known for its business-oriented design, offering robust durability, advanced security features, and premium keyboard experiences. The IdeaPad series provides a balance between performance, affordability, and aesthetics, making it ideal for everyday use and productivity. The Yoga series stands out with its 2-in-1 flexibility, offering laptops that double as tablets with touchscreens and pens for a highly versatile user experience.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingFour">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                Which buik's workshop laptop models are best suited for gaming or graphic design?
+              </button>
+            </h2>
+            <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFour">
+              <hr class="my-0">
+              <div class="accordion-body">
+                For gaming or graphic design, buik's workshop's Legion series is designed to accommodate high-end gaming with powerful graphics cards, processors, and cooling systems. For design professionals seeking high-resolution displays and color accuracy, the Yoga series offers excellent screen quality and performance suited for creative work.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingFive">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFive" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                Are buik's workshop laptops good for students and professionals on a budget?
+              </button>
+            </h2>
+            <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFive">
+              <hr class="my-0">
+              <div class="accordion-body">
+                Absolutely. buik's workshop caters to a wide audience, including students and professionals who are mindful of their budget. The IdeaPad series offers a range of models that don't compromise on performance or build quality despite their attractive price points. Additionally, buik's workshop Chromebooks are an excellent choice for budget-conscious users seeking a device for web-based tasks, document editing, and e-learning.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <button
+        type="button"
+        class="btn btn-dark text-light btn-floating btn-lg skib rounded-circle fs-5 px-1 py-0"
+        id="btn-back-to-top"
+        >
+        <i class="bi bi-arrow-up"></i>
+      </button>
+
+    </main>
+
+
+    <footer class="bg-dark">
+      <div class="container">
+        <div class="d-flex flex-wrap justify-content-between align-items-center py-5 border-top">
+          <div class="col-md-4 d-flex align-items-center">
+            <a href="/" class="mb-1 me-2 mb-md-0 text-secondary text-decoration-none lh-1">
+              <i class="bi bi-pc-display"></i>
+            </a>
+            <span class="text-secondary">© 2024 buik's <span class="text-warning">workshop</span> Enterprise, Inc</span>
+          </div>
+    
+          <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+            <li class="ms-3"><a class="text-warning" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
+                <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334q.002-.211-.006-.422A6.7 6.7 0 0 0 16 3.542a6.7 6.7 0 0 1-1.889.518 3.3 3.3 0 0 0 1.447-1.817 6.5 6.5 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.32 9.32 0 0 1-6.767-3.429 3.29 3.29 0 0 0 1.018 4.382A3.3 3.3 0 0 1 .64 6.575v.045a3.29 3.29 0 0 0 2.632 3.218 3.2 3.2 0 0 1-.865.115 3 3 0 0 1-.614-.057 3.28 3.28 0 0 0 3.067 2.277A6.6 6.6 0 0 1 .78 13.58a6 6 0 0 1-.78-.045A9.34 9.34 0 0 0 5.026 15"/>
+              </svg>
+            </a></li>
+            <li class="ms-3"><a class="text-warning" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+                <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
+              </svg>
+            </a></li>
+            <li class="ms-3"><a class="text-warning" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
+              </svg>
+            </a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+    
+
+
+
+    <script>
+      document.querySelector('.learn-more').addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent default anchor behavior
+        document.querySelector('#about-us').scrollIntoView({ behavior: 'smooth' });
+    });
+    
+    </script>
+
+    <script>
+      const learnMoreBtn = document.querySelector('.learn-more');
+
+      learnMoreBtn.addEventListener('mouseenter', () => {
+        learnMoreBtn.textContent = 'Learn more ->';
+      });
+
+      learnMoreBtn.addEventListener('mouseleave', () => {
+        learnMoreBtn.textContent = 'Learn more...';
+      });
+
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var typed = new Typed(".auto-typed", {
+          strings: ["Quality Laptops", "Expert Repairs", "Trusted Service."],
+          typeSpeed: 70,
+          backSpeed: 30,
+          loop: true
+        });
+      });
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var typed = new Typed(".auto-typed1", {
+          strings: ["Quality Laptops", "Expert Repairs", "Trusted Service."],
+          typeSpeed: 70,
+          backSpeed: 30,
+          loop: true
+        });
+      });
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var typed = new Typed(".auto-typed2", {
+          strings: ["Quality Laptops", "Expert Repairs", "Trusted Service."],
+          typeSpeed: 85,
+          backSpeed: 35,
+          loop: true
+        });
+      });
+    </script>
+    
+    <script>
+            //Get the button
+      let mybutton = document.getElementById("btn-back-to-top");
+
+      // When the user scrolls down 20px from the top of the document, show the button
+      window.onscroll = function () {
+        scrollFunction();
+      };
+
+      function scrollFunction() {
+        if (
+          document.body.scrollTop > 20 ||
+          document.documentElement.scrollTop > 20
+        ) {
+          mybutton.style.display = "block";
+        } else {
+          mybutton.style.display = "none";
+        }
+      }
+      // When the user clicks on the button, scroll to the top of the document
+      mybutton.addEventListener("click", backToTop);
+
+      function backToTop() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+      }
+    </script>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+</body>
+</html>

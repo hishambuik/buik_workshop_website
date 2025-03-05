@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link 
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
+    rel="stylesheet" 
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
+    crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <script defer src="app.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+  main{
+    display: flex;
+    background: rgb(255,236,160);
+    background: radial-gradient(circle, rgba(255,236,160,1) 0%, rgba(242,201,15,1) 70%);
+  }
+
+  .form-control:focus {
+    border-color: rgb(247, 182, 62) !important;
+    box-shadow: 0 0 5px rgb(247, 182, 62);
+  }
+  .carousel-inner {
+    height: 380px; /* Sets a fixed height for the carousel */
+  }
+
+  .carousel-item, .carousel-item > img{
+    height: 100%;
+    object-fit: cover; /* Keeps full image visible vertically without cropping */
+  }
+
+  .navbar-brand:hover{
+    color:#ffc107;
+  }
+  .navbar-brand{
+    transition: all 0.2s ease;
+  }
+
+  .family{
+    font-weight:350;
+  }
+
+</style>
+<body style="background-color: rgb(239, 239, 239);">
+    <header>
+      <nav class="navbar navbar-expand-md navbar-dark py-3 bg-dark">
+          <div class="container mx-auto">
+            <a class="navbar-brand d-flex align-items-center d-none d-md-block" href="homepage.html">
+              <div class="vr text-white me-3"></div>
+              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-pc-display ms-1" viewBox="0 0 16 16">
+                  <path d="M8 1a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1zm1 13.5a.5.5 0 1 0 1 0 .5.5 0 0 0-1 0m2 0a.5.5 0 1 0 1 0 .5.5 0 0 0-1 0M9.5 1a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1zM9 3.5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 0-1h-5a.5.5 0 0 0-.5.5M1.5 2A1.5 1.5 0 0 0 0 3.5v7A1.5 1.5 0 0 0 1.5 12H6v2h-.5a.5.5 0 0 0 0 1H7v-4H1.5a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .5-.5H7V2z"/>
+              </svg>
+              <span class="ms-2">buik's <span class="text-warning">workshop<span class="d-none d-md-inline"><></span></span></span>
+              <div class="vr text-white ms-3"></div>
+            </a>
+
+            <a class="navbar-brand d-flex align-items-center mx-auto d-md-block d-md-none" href="homepage.html">
+              <div class="vr text-white me-3"></div>
+              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-pc-display ms-1" viewBox="0 0 16 16">
+                  <path d="M8 1a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1zm1 13.5a.5.5 0 1 0 1 0 .5.5 0 0 0-1 0m2 0a.5.5 0 1 0 1 0 .5.5 0 0 0-1 0M9.5 1a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1zM9 3.5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 0-1h-5a.5.5 0 0 0-.5.5M1.5 2A1.5 1.5 0 0 0 0 3.5v7A1.5 1.5 0 0 0 1.5 12H6v2h-.5a.5.5 0 0 0 0 1H7v-4H1.5a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .5-.5H7V2z"/>
+              </svg>
+              <span class="ms-2">buik's <span class="text-warning">workshop<span class="d-none d-md-inline"><></span></span></span>
+              <div class="vr text-white ms-3"></div>
+            </a>
+
+
+              <div class="dropdown d-none d-md-block">
+                <button class="btn btn-dark d-flex align-items-center p-1 ms-2 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                      <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                      <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+                  </svg>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
+                  <li><a class="dropdown-item" href="#"><i class="bi bi-person-fill"></i> Profile</a></li>
+                  <li><hr class="divider my-1"></li>
+                  <li><a class="dropdown-item " href="loginpage.html"><i class="bi bi-box-arrow-in-right"></i>  Login</a></li>
+                  <li><a class="dropdown-item" href="#"><i class="bi bi-person-plus"></i>  Sign up</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+      </nav>
+      <div class="container">
+        
+      </div>
+    </header>
+
+    <main>
+      <div class="container mt-4 mb-5 pt-2">
+        <h1 class="display-5 mb-5 text-center family hidden from-down">Be a Part of Our <span class="auto-typed bg-dark text-warning px-2 pb-2 rounded"></span></h1>
+        <div class="row d-flex justify-content-center g-0 hidden from-down">
+          <div class="col-lg-4">
+            <div class="container bg-dark text-light p-5 rounded-start-4">
+              <h3>Login to your <span class="text-warning">Account!</span></h3>
+              <h6 class="text-secondary">Please enter your registered account to sign in buik's member workshop!</h6>
+              <form class=" py-2" onsubmit="return validateLogin(event)">
+                <div class="form-floating mt-2 text-secondary">
+                  <input type="email" class="form-control" id="username" name="username" placeholder="name@example.com">
+                  <label for="username" class="form-label">Email address</label>
+                </div>
+                <div id="emailHelp" class="form-text text-secondary mb-3">We'll never share your email with anyone else.</div>
+
+                <div class="form-floating text-secondary mb-3">
+                  <input type="password" class="form-control" id="password" name="password" placeholder="12345678!">
+                  <label for="password" class="form-label">Password</label>
+                </div>
+                <div class="mb-3 form-check">
+                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                  <label class="form-check-label text-warning" for="exampleCheck1">Remember me.</label>
+                </div>
+                <div class="error-message text-danger fw-bolder text-small mb-3 " id="error-message"> </div>
+                <button type="submit" class="btn btn-warning" value="Masuk">Submit</button>
+              </form>
+              <a href="" class="small text-secondary">Forgot Password?</a> 
+            </div>
+          </div>
+
+          <div class="col-4 d-lg-block d-none py-5 ps-1 pe-5 bg-dark rounded-end-4">
+            <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3500">
+              <div class="carousel-inner">
+                  <div class="carousel-item active ">
+                      <img src="https://cdni.iconscout.com/illustration/premium/thumb/working-together-illustration-download-in-svg-png-gif-file-formats--teamwork-collaboration-work-people-illustrations-1819902.png?f=webp" class="d-block w-100 carousel-image" alt="...">
+                  </div>
+              </div>
+            </div>
+          </div>
+          
+          <a href="signuppage.html" class="text-dark header-5 text-center mt-2 fw-semibold hidden from-left">Dont have an Account yet? Just Sign Up!</a> 
+        </div>
+      </div>
+    </main>
+    
+    <footer class="bg-dark">
+      <div class="container">
+        <div class="d-flex flex-wrap justify-content-between align-items-center py-5">
+          <div class="col-md-4 d-flex align-items-center">
+            <a href="/" class="mb-1 me-2 mb-md-0 text-secondary text-decoration-none lh-1">
+              <i class="bi bi-pc-display"></i>
+            </a>
+            <span class="text-secondary">© 2024 buik's <span class="text-warning">workshop</span> Enterprise, Inc</span>
+          </div>
+    
+          <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+            <li class="ms-3"><a class="text-warning" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
+                <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334q.002-.211-.006-.422A6.7 6.7 0 0 0 16 3.542a6.7 6.7 0 0 1-1.889.518 3.3 3.3 0 0 0 1.447-1.817 6.5 6.5 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.32 9.32 0 0 1-6.767-3.429 3.29 3.29 0 0 0 1.018 4.382A3.3 3.3 0 0 1 .64 6.575v.045a3.29 3.29 0 0 0 2.632 3.218 3.2 3.2 0 0 1-.865.115 3 3 0 0 1-.614-.057 3.28 3.28 0 0 0 3.067 2.277A6.6 6.6 0 0 1 .78 13.58a6 6 0 0 1-.78-.045A9.34 9.34 0 0 0 5.026 15"/>
+              </svg>
+            </a></li>
+            <li class="ms-3"><a class="text-warning" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+                <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
+              </svg>
+            </a></li>
+            <li class="ms-3"><a class="text-warning" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
+              </svg>
+            </a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var typed = new Typed(".auto-typed", {
+          strings: ["Family", "Workshop", "Group"],
+          typeSpeed: 70,
+          backSpeed: 30,
+          loop: true
+        });
+      });
+    </script>
+    <script>
+      function validateLogin() {
+        event.preventDefault(); 
+          const username = document.getElementById('username').value;
+          const password = document.getElementById('password').value;
+          const errorMessage = document.getElementById('error-message');
+
+          const validUsername = 'hisyambuik2007@gmail.com';
+          const validPassword = 'hishamganteng';
+
+          if (username === validUsername && password === validPassword) {
+              window.location.href = 'homepage.html';
+              return false;
+          } else {
+              errorMessage.textContent = 'Username or Password is wrong';
+              return false;
+          }
+      }
+    </script>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+</body>
+</html>
